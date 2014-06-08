@@ -75,6 +75,60 @@ class BobTests: XCTestCase {
         verify(input, againstExpected: expected)
     }
     
+    func testQuestionWithOnlyNumbers() {
+        let input = "4?"
+        let expected = "Sure."
+        verify(input, againstExpected: expected)
+    }
+    
+    func testShoutingWithSpecialCharacters() {
+        let input = "ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"
+        let expected = "Woah, chill out!"
+        verify(input, againstExpected: expected)
+    }
+    
+    func testShoutingWithUmlautsCharacters() {
+        let input = "ÄMLÄTS!"
+        let expected = "Woah, chill out!"
+        verify(input, againstExpected: expected)
+    }
+    
+    func testCalmlySpeakingAboutUmlauts() {
+        let input = "ÄMLäTS!"
+        let expected = "Whatever."
+        verify(input, againstExpected: expected)
+    }
+    
+    func testShoutingWithNoExclamationmark() {
+        let input = "I HATE YOU"
+        let expected = "Woah, chill out!"
+        verify(input, againstExpected: expected)
+    }
+    
+    func testStatementContainingQuestionsMark() {
+        let input = "Ending with a ? means a question."
+        let expected = "Whatever."
+        verify(input, againstExpected: expected)
+    }
+    
+    func testPrattlingOn() {
+        let input = "Wait! Hang on.  Are you going to be OK?"
+        let expected = "Sure."
+        verify(input, againstExpected: expected)
+    }
+    
+    func testSilence() {
+        let input = ""
+        let expected = "Fine, be that way."
+        verify(input, againstExpected: expected)
+    }
+    
+    func testProlongedSilence() {
+        let input = "     "
+        let expected = "Fine, be that way."
+        verify(input, againstExpected: expected)
+    }
+    
     func testExample() {
         XCTAssert(true, "Pass")
     }

@@ -27,3 +27,17 @@ isShouting("1, 2!")
 isShouting("WATCH OUT!")
 
 
+func isSilent(input: String) -> Bool {
+    let range = NSMakeRange(0, countElements(input))
+    var newInput: String = ""
+    for character in input {
+        if character != " " {
+            newInput += character
+        }
+    }
+    return countElements(newInput) == 0
+}
+isSilent("")
+isSilent("   ")
+isSilent("123")
+isSilent("abc")

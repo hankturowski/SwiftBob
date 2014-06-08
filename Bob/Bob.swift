@@ -18,6 +18,8 @@ class Bob {
             response = "Woah, chill out!"
         } else if isQuestion(input) {
             response = "Sure."
+        } else if isSilent(input) {
+            response = "Fine, be that way."
         }
         
         return response
@@ -30,6 +32,17 @@ class Bob {
     func isShouting(input: String) -> Bool {
          return input == input.uppercaseString &&
             inputContainsALetter(input)
+    }
+    
+    func isSilent(input: String) -> Bool {
+        let range = NSMakeRange(0, countElements(input))
+        var newInput: String = ""
+        for character in input {
+            if character != " " {
+                newInput += character
+            }
+        }
+        return countElements(newInput) == 0
     }
     
     func inputContainsALetter(input: String) -> Bool {
